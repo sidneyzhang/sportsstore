@@ -7,7 +7,8 @@ import AuthModule from "./auth";
 
 Vue.use(Vuex);
 
-const baseUrl = "http://localhost:3500";
+// const baseUrl = "http://localhost:3500";
+const baseUrl = "/api";
 const productsUrl = `${baseUrl}/products`;
 const categoriesUrl = `${baseUrl}/categories`;
 
@@ -92,7 +93,7 @@ export default new Vuex.Store({
         },
         _updateProduct(state,product){
             let page = state.pages[state.currentPage];
-            let index = state.findIndex(p => p.id === product.id);
+            let index = page.findIndex(p => p.id == product.id);
             Vue.set(page,index,product);
         },
     },
